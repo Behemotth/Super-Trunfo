@@ -42,4 +42,6 @@ return 0;
 
 }
 
+//tbm n sei como faço ou se da pra exacutar o codigo pelo github ent to usando o dev c++ se alguem puder me indicar um sistema melhor ou se da pra executar por aqui, eu ficaria agradecido.
+
 // nao sei se estou no caminho certo, ainda me questiono sobre como colocar uma repetiçao pra inserir os dados da nova carta ou se isso é necessario.
