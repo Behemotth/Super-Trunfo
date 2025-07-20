@@ -25,7 +25,6 @@ int turisticos2;
 float area2;
 float pib2;
 
-
 char capital2 [50];
 char codigo2 [50];
 char estado2 [50];
@@ -72,7 +71,7 @@ printf("\n Digite o numero de pessoas que habitam %s segundo o IBGE:", estado2);
 scanf("%d",&populacao2);
 
 printf("\n Digite o PIB:");
-scanf ("%f", &pib2);
+scanf("%f", &pib2);
 
 printf("\n Qual a area de %s sem km²?:", estado2);
 scanf("%f", &area2);
@@ -82,11 +81,14 @@ scanf("%d", &turisticos2);
 
 getchar();//Aqui tbm tive que repetir o codigo de limpeza pq tava tando conflito 
 printf("\n Qual a capital desse Estado?:");
-fgets(capital2, sizeof(capital2), stdin);
+fgets(capital2, sizeof(capital2), stdin);   
 capital2[strcspn(capital2, "\n")] = '\0';
 
 printf ("\n Qual codigo representa %s ?:", estado2);
 scanf("%s", codigo2);
+
+printf("Certo!todas as cartas foram cadastradas com sucesso!\n\n");
+printf("Vamos ver os dados das cartas cadastradas:\n\n");
 
 printf("\n \n Estado: %s \n Capital: %s \n Populacao:%d \n Com Aproximadamente %d pontos turisticos. \n e uma area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s.\n\n ", estado1,capital1,populacao1,turisticos1,area1,pib1,codigo1);  
 
