@@ -2,6 +2,7 @@
     "files.associations": {
         "super-trunfo": "c",
         "Super_Trunfo.C": "cpp",
-        "Testando 01.C": "cpp"
+        "Testando 01.C": "cpp",
+        "Super_Trunfo(nivel 2).C": "cpp"
     }
 }
