@@ -2,39 +2,27 @@
 int main (){
 
     /*
-    soma (+)
-    subtraçao (-)
-    multiplicaçao (*)
-    Divisao (/)
+    atribuiçao com soma (+=)
+    atribuiçao com subtraçao (-=)
+    atribuiçao com multiplicaçao (*=)
+    atribuiçao com Divisao (/=)
     */
 
-    int n1,n2;
-    int soma, subtraçao,multiplicaçao,Divisao;
+    int n1,n2, resultado;
 
-    
-    printf("insira o primeiro numero: \n");
-    scanf("%d",&n1);
- 
-    printf("insira o segundo numero:\n");
-    scanf("%d",&n2);
-
-
-  //operaão soma
-    soma = n1 + n2;
-
-    //operação subtraçao
-    subtraçao = n1 - n2;  
-
-    //operaçao multiplicaçao
-    multiplicaçao = n1 * n2;
-
-    //operacao divisao
-    Divisao = n1 / n2;
-
- printf("a Soma e: %d:\n", soma);
-  printf("a Subraçao e: %d:\n", subtraçao);
-   printf("a Divisao e: %d:\n", Divisao);
-    printf("a multiplicacao e: %d:\n", multiplicaçao);
+    //leva-se em consideraçao que todo o cauculo sera feito sequencialmente, 10 + 20 - 5 * 2 / 3 e no fim mostrando o resultado final.
+resultado = 10;
+  printf("resultado numerico: %d \n", resultado);
+  //resultado = resultado + 20;
+resultado += 20;
+  printf("resultado apos soma: %d \n", resultado);
+  //resultado = resultado - 5;
+resultado -= 5; 
+  printf("resultado apos subtracao: %d \n", resultado);
+  //resultado = resultado * 2;
+resultado *= 2;
+  printf("resultado apos multiplicacao: %d \n", resultado);
+  //resultado = resultado / 3;
+resultado /= 3;  
+  printf("resultado apos divisao: %d \n", resultado);
 }
-
-  
