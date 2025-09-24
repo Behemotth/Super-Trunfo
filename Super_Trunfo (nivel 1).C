@@ -31,7 +31,7 @@ int main() {
         printf("Digite o numero de pessoas que habitam %s: ", cartas[i].pais);
         scanf("%d", &cartas[i].populacao);
 
-        printf("Digite o PIB (em milhões, por exemplo 2000.50): ");
+        printf("Digite o PIB: ");
         scanf("%f", &cartas[i].pib);
 
         printf("Qual a area de %s sem km²?: ", cartas[i].pais);
