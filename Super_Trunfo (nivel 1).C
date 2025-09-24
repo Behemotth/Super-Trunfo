@@ -6,13 +6,13 @@ int main (){
     //carta1
     //lembrei que da pra abreviar desta forma ao inves de encher o codigo de Char, char ,int, int...
 int populacao1,turisticos1;
-float area1,pib1;
+float area1,pib1;densidade1,pibpercapita1;
 char capital1 [50],codigo1 [50],pais1 [50];
 //carta2 
     //demorei um pouco me lembrar que cada caso é um caso e uma minima alteraçao nos codigos ja transfoma em um responsavel por novos dados kk 
     //no caso populaçao1 e populacao 2 podem servir pra armazenar o mesmo tipo de dados com valores diferentes de paíss diferentes
 int populacao2,turisticos2;
-float area2,pib2;
+float area2,pib2,densidade2,pibpercapita2;
 char capital2 [50],codigo2 [50],pais2 [50];
 
 //cadastro carta1
@@ -76,9 +76,15 @@ scanf("%s", codigo2);
 printf("Certo!todas as cartas foram cadastradas com sucesso!\n\n");
 printf("Vamos ver os dados das cartas cadastradas:\n\n");
 
-printf("\n \n País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente %d. pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s.\n\n ", pais1,capital1,populacao1,turisticos1,area1,pib1,codigo1);  
+densidade1 = populacao1 / area1;
+pibpercapita1 = pib1 / populacao1;
 
-printf("País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente: %d pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s.", pais2,capital2,populacao2,turisticos2,area2,pib2,codigo2 );  
+densidade2 = populacao2 / area2;
+pibpercapita2 = pib2 / populacao2;
+
+printf("\n \n País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente %d. pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s. \n Densidade populacional: %.2f hab/km².\n PIB per capita: %.2f.\n\n ", pais1,capital1,populacao1,turisticos1,area1,pib1,codigo1,densidade1,pibpercapita1);  
+
+printf("País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente: %d pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s. \n Densidade populacional: %.2f hab/km².\n PIB per capita: %.2f.\n\n ", pais2,capital2,populacao2,turisticos2,area2,pib2,codigo2,densidade2,pibpercapita2);  
 
 //nao estou conseguindo diminuir o numero de casas decimais que aparecem, eu li em um site que digitar o numero de casas que vc quer que apareça resolveria, mas n foi exatamente o caso infelizmente.
 return 0;
