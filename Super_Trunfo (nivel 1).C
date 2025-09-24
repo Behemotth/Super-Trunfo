@@ -1,92 +1,74 @@
 #include <stdio.h>
-#include <string.h> // anexei o string.h por que alguns nomes compostos de país foram usados e fgets necessita dele
+#include <string.h> // preciso pra usar fgets com nomes compostos
 
-int main (){
+// === aqui criamos a "carta", que é tipo uma caixinha que guarda tudo do país ===
+typedef struct {
+    char pais[50];      // nome do país
+    char capital[50];   // capital
+    char codigo[50];    // código da carta
+    int populacao;      // população
+    int turisticos;     // pontos turísticos
+    float area;         // área em km²
+    float pib;          // PIB total
+    float densidade;    // densidade populacional
+    float pibPerCapita; // PIB por pessoa
+} Carta;
 
-    //carta1
-    //lembrei que da pra abreviar desta forma ao inves de encher o codigo de Char, char ,int, int...
-int populacao1,turisticos1;
-float area1,pib1;densidade1,pibpercapita1;
-char capital1 [50],codigo1 [50],pais1 [50];
-//carta2 
-    //demorei um pouco me lembrar que cada caso é um caso e uma minima alteraçao nos codigos ja transfoma em um responsavel por novos dados kk 
-    //no caso populaçao1 e populacao 2 podem servir pra armazenar o mesmo tipo de dados com valores diferentes de paíss diferentes
-int populacao2,turisticos2;
-float area2,pib2,densidade2,pibpercapita2;
-char capital2 [50],codigo2 [50],pais2 [50];
+int main() {
+    Carta cartas[2]; // array de 2 cartas, assim não preciso repetir código igual idiota
 
-//cadastro carta1
-printf("Vamos começar o cadastro das Cartas.\n");
-printf("\n\n");
-printf("Vamos ao cadastro da carta numero 1.");
-printf("\n");
-printf("Digite o nome do país 1:");
-fgets(pais1, sizeof(pais1), stdin); //fgets é melhor para usar com nomes compostos
-pais1[strcspn(pais1, "\n")] = '\0'; //fgets infelizmente capta um \n fantasma que atrapalha na maioria dos casos ate agora, essa linha de codigo transforma o \n captado em \0 anulando o problema.
+    printf("Vamos começar o cadastro das Cartas.\n\n");
 
-printf("\n Digite o numero de pessoas que habitam %s:", pais1);
-scanf("%d",&populacao1);
+    // === loop para cadastrar todas as cartas ===
+    for (int i = 0; i < 2; i++) {
+        printf("Vamos ao cadastro da carta numero %d.\n", i + 1);
 
-printf("\n Digite o PIB:");
-scanf("%f", &pib1);
+        getchar(); // limpa o buffer antes do fgets pra não pular o nome do país
+        printf("Digite o nome do país %d: ", i + 1);
+        fgets(cartas[i].pais, sizeof(cartas[i].pais), stdin);
+        cartas[i].pais[strcspn(cartas[i].pais, "\n")] = '\0';
 
-printf("\n Qual a area de %s sem km²?:", pais1);
-scanf ("%f", &area1);
+        printf("Digite o numero de pessoas que habitam %s: ", cartas[i].pais);
+        scanf("%d", &cartas[i].populacao);
 
-printf("\n Possui quantos pontos turisticos?:");
-scanf("%d", &turisticos1);
+        printf("Digite o PIB (em milhões, por exemplo 2000.50): ");
+        scanf("%f", &cartas[i].pib);
 
-getchar();   //pelo que vi esse codigo serve pra limpar o que foi digitado na entrada anterior, achei bem util, eu tava quebrando a cabeça do devc++ pra descobrir o que tava me atrapalhando pois me sumia a entrada pra digitar o 2 país.
-printf("\n Qual a capital desse país?:");
-fgets(capital1, sizeof(capital1), stdin); 
-capital1 [strcspn(capital1, "\n")] = '\0';
+        printf("Qual a area de %s sem km²?: ", cartas[i].pais);
+        scanf("%f", &cartas[i].area);
 
-printf ("\n Qual codigo representa %s ?:", pais1);
-scanf("%s", codigo1);
+        printf("Possui quantos pontos turisticos?: ");
+        scanf("%d", &cartas[i].turisticos);
 
-//cadastro carta 2
-printf("\n\n");
-printf("Vamos ao cadastro da carta numero 2.");
+        getchar(); // limpa buffer pra não bagunçar o fgets da capital
 
-getchar();//Aqui tbm tive que repetir o codigo de limpeza pq tava tando conflito 
-printf("\n Digite o nome do país 2:");
-fgets(pais2, sizeof(pais2), stdin); //fgets é melhor para usar com nomes compostos
-pais2 [strcspn(pais2, "\n")] = '\0';
+        printf("Qual a capital desse país?: ");
+        fgets(cartas[i].capital, sizeof(cartas[i].capital), stdin);
+        cartas[i].capital[strcspn(cartas[i].capital, "\n")] = '\0';
 
-printf("\n Digite o numero de pessoas que habitam %s segundo o IBGE:", pais2);
-scanf("%d",&populacao2);
+        printf("Qual codigo representa %s ?: ", cartas[i].pais);
+        scanf("%s", cartas[i].codigo);
 
-printf("\n Digite o PIB:");
-scanf("%f", &pib2);
+        // cálculos automáticos
+        cartas[i].densidade = cartas[i].populacao / cartas[i].area;
+        cartas[i].pibPerCapita = cartas[i].pib / cartas[i].populacao;
 
-printf("\n Qual a area de %s sem km²?:", pais2);
-scanf("%f", &area2);
+        printf("Carta %d cadastrada com sucesso!\n\n", i + 1);
+    }
 
-printf("\n Possui quantos pontos turisticos?:");
-scanf("%d", &turisticos2);
+    // === mostrar os dados das cartas cadastradas ===
+    printf("Vamos ver os dados das cartas cadastradas:\n\n");
+    for (int i = 0; i < 2; i++) {
+        printf("País: %s\n", cartas[i].pais);
+        printf("Capital: %s\n", cartas[i].capital);
+        printf("Populacao: %d\n", cartas[i].populacao);
+        printf("Aproximadamente %d pontos turisticos\n", cartas[i].turisticos);
+        printf("Area: %.2f km²\n", cartas[i].area);
+        printf("PIB: %.2f\n", cartas[i].pib);
+        printf("Codigo: %s\n", cartas[i].codigo);
+        printf("Densidade populacional: %.2f hab/km²\n", cartas[i].densidade);
+        printf("PIB per capita: %.2f\n\n", cartas[i].pibPerCapita);
+    }
 
-getchar();//Aqui tbm tive que repetir o codigo de limpeza pq tava tando conflito 
-printf("\n Qual a capital desse país?:");
-fgets(capital2, sizeof(capital2), stdin);   
-capital2[strcspn(capital2, "\n")] = '\0';
-
-printf ("\n Qual codigo representa %s ?:", pais2);
-scanf("%s", codigo2);
-
-printf("Certo!todas as cartas foram cadastradas com sucesso!\n\n");
-printf("Vamos ver os dados das cartas cadastradas:\n\n");
-
-densidade1 = populacao1 / area1;
-pibpercapita1 = pib1 / populacao1;
-
-densidade2 = populacao2 / area2;
-pibpercapita2 = pib2 / populacao2;
-
-printf("\n \n País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente %d. pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s. \n Densidade populacional: %.2f hab/km².\n PIB per capita: %.2f.\n\n ", pais1,capital1,populacao1,turisticos1,area1,pib1,codigo1,densidade1,pibpercapita1);  
-
-printf("País: %s. \n Capital: %s. \n Populacao:%d. \n Aproximadamente: %d pontos turisticos. \n Area de %3f km². \n um PIB de %3f. \n  seu Codigo é %s. \n Densidade populacional: %.2f hab/km².\n PIB per capita: %.2f.\n\n ", pais2,capital2,populacao2,turisticos2,area2,pib2,codigo2,densidade2,pibpercapita2);  
-
-//nao estou conseguindo diminuir o numero de casas decimais que aparecem, eu li em um site que digitar o numero de casas que vc quer que apareça resolveria, mas n foi exatamente o caso infelizmente.
-return 0;
-
+     return 0; // fim do programa
 }
