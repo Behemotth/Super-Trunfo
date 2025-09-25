@@ -35,4 +35,3 @@ int main() {
     return 0; // fim do programa
     //é um pouco mais complexo que no portugol mas é isso, deu pra fazer
 }
-525
