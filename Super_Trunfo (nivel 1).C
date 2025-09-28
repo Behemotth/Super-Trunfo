@@ -78,10 +78,7 @@ int main() {
         printf("PIB per capita: %.2f\n\n", cartas[i].pibPerCapita);
         printf("SUPERPODER: %.2f\n\n", cartas[i].SUPERPODER);
 
-}
-    
-
-//compare os super poderes pontos das cartas
+        //compare os super poderes pontos das cartas
     printf("Comparando os pontos e SUPERPODERES das cartas...\n");
     
     int comp_pop = cartas[0].populacao > cartas[1].populacao;
@@ -92,7 +89,7 @@ int main() {
     int comp_den = cartas[0].densidade < cartas[1].densidade;
     int comp_sp = cartas[0].SUPERPODER > cartas[1].SUPERPODER;
 
-printf("\n");
+ printf("\n");
 
     printf("Para 1 a vitoria é da CARTA 1 e para 0 a vitoria é da CARTA 2\n");
     printf("Comparando os atributos:\n");
