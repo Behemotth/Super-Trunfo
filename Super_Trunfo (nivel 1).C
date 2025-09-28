@@ -15,55 +15,54 @@ typedef struct {
     float SUPERPODER;             // atributo especial 
 } Carta;
 
+
 int main() {
     Carta cartas[2]; // array de 2 cartas, assim não preciso repetir código igual idiota
 
     printf("Vamos começar o cadastro das Cartas.\n\n");
 
-    // === loop para cadastrar todas as cartas ===
+    // loop para cadastrar todas as cartas, aqui é tipo "faz a mesma coisa pra cada carta"
     for (int i = 0; i < 2; i++) {
         printf("Vamos ao cadastro da carta numero %d.\n", i + 1);
 
-        getchar(); // limpa o buffer antes do fgets pra não pular o nome do país
+        // pedir o nome do país, usando fgets pq nomes podem ter espaços
         printf("Digite o nome do país %d: ", i + 1);
         fgets(cartas[i].pais, sizeof(cartas[i].pais), stdin);
-        cartas[i].pais[strcspn(cartas[i].pais, "\n")] = '\0';
+        cartas[i].pais[strcspn(cartas[i].pais, "\n")] = '\0'; // tira o enter que o fgets coloca sozinho
 
+        // população do país
         printf("Digite o numero de pessoas que habitam %s: ", cartas[i].pais);
-        scanf("%lu", &cartas[i].populacao);
+        scanf("%d", &cartas[i].populacao);
 
+        // PIB do país
         printf("Digite o PIB: ");
         scanf("%f", &cartas[i].pib);
 
+        // área do país
         printf("Qual a area de %s sem km²?: ", cartas[i].pais);
         scanf("%f", &cartas[i].area);
 
+        // pontos turísticos
         printf("Possui quantos pontos turisticos?: ");
         scanf("%d", &cartas[i].turisticos);
 
-        getchar(); // limpa buffer pra não bagunçar o fgets da capital
+        getchar(); // limpa o buffer pra não bagunçar o fgets da capital
 
         printf("Qual a capital desse país?: ");
         fgets(cartas[i].capital, sizeof(cartas[i].capital), stdin);
         cartas[i].capital[strcspn(cartas[i].capital, "\n")] = '\0';
 
+        // código da carta
         printf("Qual codigo representa %s ?: ", cartas[i].pais);
         scanf("%s", cartas[i].codigo);
 
-        // cálculos automáticos
-    cartas[i].densidade = cartas[i].populacao / cartas[i].area;
-    cartas[i].pibPerCapita = cartas[i].pib / cartas[i].populacao;
+        // cálculos automáticos pra não ter que fazer na mão depois
+        cartas[i].densidade = cartas[i].populacao / cartas[i].area;
+        cartas[i].pibPerCapita = cartas[i].pib / cartas[i].populacao;
 
-    cartas[i].SUPERPODER = 
-       (float)cartas[i].populacao 
-    + cartas[i].pib 
-    + cartas[i].area 
-    + (float)cartas[i].turisticos 
-    + cartas[i].pibPerCapita 
-    + (1.0f/cartas[i].densidade); 
-       
- printf("Carta %d cadastrada com sucesso!\n\n", i + 1);
+        printf("\nCarta %d cadastrada com sucesso!\n\n", i + 1); // só pra deixar claro que terminou a carta
     }
+
 
     // === mostrar os dados das cartas cadastradas ===
     printf("Vamos ver os dados das cartas cadastradas:\n\n");
@@ -79,6 +78,7 @@ int main() {
         printf("PIB per capita: %.2f\n\n", cartas[i].pibPerCapita);
         printf("SUPERPODER: %.2f\n\n", cartas[i].SUPERPODER);
 
+}
     }
 
 //compare os super poderes pontos das cartas
@@ -93,7 +93,9 @@ int main() {
     int comp_sp = cartas[0].SUPERPODER > cartas[1].SUPERPODER;
 
 printf("\n");
+
 printf("Para 1 a vitoria é da CARTA 1 e para 0 a vitoria é da CARTA 2\n");
+
 printf ("\n");
     printf("Comparando os atributos:\n");
     printf("Populacao: %d  \n", comp_pop);
@@ -105,4 +107,4 @@ printf ("\n");
     printf("SUPERPODER: %d \n", comp_sp);
     
      return 0; // fim do programa
-} 
+}
