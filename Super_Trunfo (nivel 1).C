@@ -79,7 +79,7 @@ int main() {
         printf("SUPERPODER: %.2f\n\n", cartas[i].SUPERPODER);
 
 }
-    }
+    
 
 //compare os super poderes pontos das cartas
     printf("Comparando os pontos e SUPERPODERES das cartas...\n");
@@ -94,10 +94,10 @@ int main() {
 
 printf("\n");
 
-printf("Para 1 a vitoria é da CARTA 1 e para 0 a vitoria é da CARTA 2\n");
-
-printf ("\n");
+    printf("Para 1 a vitoria é da CARTA 1 e para 0 a vitoria é da CARTA 2\n");
     printf("Comparando os atributos:\n");
+    printf("\n");
+    
     printf("Populacao: %d  \n", comp_pop);
     printf("PIB: %d  \n", comp_pib);
     printf("Area: %d  \n", comp_area);
@@ -105,6 +105,5 @@ printf ("\n");
     printf("PIB per capita: %d  \n", comp_pibpc);
     printf("Densidade populacional: %d\n", comp_den);
     printf("SUPERPODER: %d \n", comp_sp);
-    
-     return 0; // fim do programa
+     return 0; // fim do programa   
 }
